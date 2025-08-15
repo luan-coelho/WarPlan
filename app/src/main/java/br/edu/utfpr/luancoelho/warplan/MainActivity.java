@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextName;
     private RadioGroup radioGroupDifficulty;
     private CheckBox checkBoxPriority;
-    private Spinner spinnerCategory;
+    private Spinner spinnerAreaOfKnowledge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,19 +28,23 @@ public class MainActivity extends AppCompatActivity {
 
         editTextName = findViewById(R.id.editTextName);
         editTextName.requestFocus();
-
         radioGroupDifficulty = findViewById(R.id.radioGroupDifficulty);
-        radioGroupDifficulty.check(R.id.radioButtonEasy);
         checkBoxPriority = findViewById(R.id.checkBoxPriority);
+        spinnerAreaOfKnowledge = findViewById(R.id.spinnerAreaOfKnowledge);
 
-        spinnerCategory = findViewById(R.id.spinnerCategory);
         populateSpinner();
     }
 
     public void populateSpinner() {
-        List<String> list = new ArrayList<>(List.of("Português", "Matemática", "Ciências"));
+        List<String> options = List.of("Português", "Matemática", "Ciências");
+
+        List<String> list = new ArrayList<>();
+        list.add("Selecione uma opção");
+        list.addAll(options);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
-        spinnerCategory.setAdapter(adapter);
+        spinnerAreaOfKnowledge.setAdapter(adapter);
+        spinnerAreaOfKnowledge.setSelection(0);
     }
 
     public void save(View view) {
@@ -51,8 +55,26 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // Exibe toast com o nome digitado e valor da média
-        showToast("Nome: " + name);
+        if (radioGroupDifficulty.getCheckedRadioButtonId() == -1) {
+            showToast("Informe a dificuldade percebida");
+            return;
+        }
+
+        if (spinnerAreaOfKnowledge.getSelectedItemPosition() == 0) {
+            showToast("Informe a área de conhecimento");
+            return;
+        }
+
+        String difficulty = getDifficulty();
+        String areaOfKnowledge = spinnerAreaOfKnowledge.getSelectedItem().toString();
+        boolean priority = checkBoxPriority.isChecked();
+        showToast("Nome: " + name + "\nDificuldade: " + difficulty + "\nÁrea de conhecimento: " + areaOfKnowledge + "\nPrioridade: " + priority);
+    }
+
+    private String getDifficulty() {
+        return radioGroupDifficulty.getCheckedRadioButtonId() == R.id.radioButtonEasy
+                ? "Fácil"
+                : "Difícil";
     }
 
     private void showToast(String text) {
@@ -61,10 +83,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void clear(View view) {
         editTextName.setText(null);
-        editTextName.requestFocus();
-        radioGroupDifficulty.check(R.id.radioButtonEasy);
-        spinnerCategory.setSelection(0);
+        radioGroupDifficulty.clearCheck();
+        spinnerAreaOfKnowledge.setSelection(0);
         checkBoxPriority.setChecked(false);
+
+        editTextName.requestFocus();
+
+        showToast("Campos limpos");
     }
 
 }
