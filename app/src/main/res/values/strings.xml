@@ -11,4 +11,8 @@
     <string name="radio_button_hard_text">Difícil</string>
     <string name="check_box_priority_text">Marcar como prioritária</string>
     <string name="text_view_category_text">Área de conhecimento</string>
+    <string name="select_option">Seleciona uma opção</string>
+    <string name="portuguese">Português</string>
+    <string name="mathematics">Matemática</string>
+    <string name="sciences">Ciências</string>
 </resources>

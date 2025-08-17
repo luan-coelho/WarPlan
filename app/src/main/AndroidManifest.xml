@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WarPlan">
         <activity
+            android:name=".SubjectActivity"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,15 +33,13 @@ public class MainActivity extends AppCompatActivity {
         checkBoxPriority = findViewById(R.id.checkBoxPriority);
         spinnerAreaOfKnowledge = findViewById(R.id.spinnerAreaOfKnowledge);
 
-        populateSpinner();
+        populateSpinnerAreaOfKnowledge();
     }
 
-    public void populateSpinner() {
-        List<String> options = List.of("Português", "Matemática", "Ciências");
+    public void populateSpinnerAreaOfKnowledge() {
+        String[] areasOfKnowledge = getResources().getStringArray(R.array.areas_of_knowledge);
 
-        List<String> list = new ArrayList<>();
-        list.add("Selecione uma opção");
-        list.addAll(options);
+        List<String> list = new ArrayList<>(Arrays.asList(areasOfKnowledge));
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
         spinnerAreaOfKnowledge.setAdapter(adapter);
