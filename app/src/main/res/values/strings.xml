@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">WarPlan</string>
     <string name="name">Nome</string>
+    <string name="description">Descrição</string>
+    <string name="exam">Concurso</string>
+    <string name="subject">Materia</string>
+    <string name="date">Data</string>
+    <string name="duration_minutes">Duração em minutos</string>
+    <string name="notes">Notas</string>
+    <string name="exam_date">Data da prova</string>
     <string name="name_hint">Informe um nome</string>
     <string name="save_button_text">Salvar</string>
     <string name="clear_button_text">Limpar</string>

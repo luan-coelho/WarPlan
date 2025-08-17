@@ -7,17 +7,17 @@ public class Exam {
     private Long id;
     private String name;
     private String description;
-    private LocalDate examDate;
+    private LocalDate date;
 
     public Exam() {
 
     }
 
-    public Exam(Long id, String name, String description, LocalDate examDate) {
+    public Exam(Long id, String name, String description, LocalDate date) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.examDate = examDate;
+        this.date = date;
     }
 
     public Long getId() {
@@ -44,12 +44,12 @@ public class Exam {
         this.description = description;
     }
 
-    public LocalDate getExamDate() {
-        return examDate;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setExamDate(LocalDate examDate) {
-        this.examDate = examDate;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
 }
