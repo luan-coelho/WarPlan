@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        editTextName = findViewById(R.id.editTextName);
+        editTextName = findViewById(R.id.editTextWeight);
         editTextName.requestFocus();
         radioGroupDifficulty = findViewById(R.id.radioGroupDifficulty);
         checkBoxPriority = findViewById(R.id.checkBoxPriority);

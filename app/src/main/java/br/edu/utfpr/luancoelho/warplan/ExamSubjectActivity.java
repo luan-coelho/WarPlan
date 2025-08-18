@@ -3,6 +3,7 @@ package br.edu.utfpr.luancoelho.warplan;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -16,6 +17,8 @@ public class ExamSubjectActivity extends AppCompatActivity {
 
     private Spinner spinnerExam;
     private Spinner spinnerSubject;
+    private EditText editTextWeight;
+    private Spinner spinnerPriority;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +27,12 @@ public class ExamSubjectActivity extends AppCompatActivity {
 
         spinnerExam = findViewById(R.id.spinnerExam);
         spinnerSubject = findViewById(R.id.spinnerSubject);
+        editTextWeight = findViewById(R.id.editTextWeight);
+        spinnerPriority = findViewById(R.id.spinnerPriority);
 
         populateSpinnerExams();
         populateSpinnerSubjects();
+        populateSpinnerPriorities();
     }
 
     public void populateSpinnerExams() {
@@ -49,8 +55,42 @@ public class ExamSubjectActivity extends AppCompatActivity {
         spinnerSubject.setSelection(0);
     }
 
-    public void save(View view) {
+    public void populateSpinnerPriorities() {
+        String[] priorities = getResources().getStringArray(R.array.priorities_names);
 
+        List<String> list = new ArrayList<>(Arrays.asList(priorities));
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
+        spinnerPriority.setAdapter(adapter);
+    }
+
+    public void save(View view) {
+        if (spinnerExam.getSelectedItemPosition() == 0) {
+            showToast("Informe o concurso");
+            return;
+        }
+
+        if (spinnerSubject.getSelectedItemPosition() == 0) {
+            showToast("Informe a matéria");
+            return;
+        }
+
+        if (editTextWeight.getText().toString().trim().isEmpty()) {
+            showToast("Informe o peso");
+            return;
+        }
+
+        if (spinnerPriority.getSelectedItemPosition() == 0) {
+            showToast("Informe a prioridade");
+            return;
+        }
+
+        String exam = spinnerExam.getSelectedItem().toString();
+        String subject = spinnerSubject.getSelectedItem().toString();
+        String weight = editTextWeight.getText().toString();
+        String priority = spinnerPriority.getSelectedItem().toString();
+
+        showToast("Concurso: " + exam + "\nMatéria: " + subject + "\nPeso: " + weight + "\nPrioridade: " + priority);
     }
 
     private void showToast(String text) {
@@ -58,6 +98,10 @@ public class ExamSubjectActivity extends AppCompatActivity {
     }
 
     public void clear(View view) {
+        spinnerExam.setSelection(0);
+        spinnerSubject.setSelection(0);
+        editTextWeight.setText(null);
+        spinnerPriority.setSelection(0);
         showToast("Campos limpos");
     }
 

@@ -9,6 +9,7 @@
     <string name="notes">Notas</string>
     <string name="exam_date">Data da prova</string>
     <string name="name_hint">Informe um nome</string>
+    <string name="weight_hint">Informe o peso</string>
     <string name="save_button_text">Salvar</string>
     <string name="clear_button_text">Limpar</string>
     <string name="media_text">Média</string>
@@ -43,4 +44,10 @@
     <string name="exam_tre">Tribunal Regional Eleitoral (TRE)</string>
     <string name="exam_cgu">Controladoria-Geral da União (CGU)</string>
     <string name="exam_anvisa">Agência Nacional de Vigilância Sanitária (ANVISA)</string>
+    <string name="weight">Peso</string>
+    <string name="priority">Prioridade</string>
+
+    <string name="priority_low">Baixa</string>
+    <string name="priority_medium">Média</string>
+    <string name="priority_high">Alta</string>
 </resources>
