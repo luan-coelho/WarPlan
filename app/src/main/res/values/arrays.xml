@@ -12,4 +12,27 @@
         <item>@string/mathematics</item>
         <item>@string/sciences</item>
     </string-array>
+
+    <string-array name="exams_names">
+        <item>@string/exam_pf</item>
+        <item>@string/exam_prf</item>
+        <item>@string/exam_receita</item>
+        <item>@string/exam_inss</item>
+        <item>@string/exam_tj</item>
+        <item>@string/exam_mp</item>
+        <item>@string/exam_bb</item>
+        <item>@string/exam_caixa</item>
+        <item>@string/exam_correios</item>
+        <item>@string/exam_pc</item>
+        <item>@string/exam_pm</item>
+        <item>@string/exam_dpu</item>
+        <item>@string/exam_senado</item>
+        <item>@string/exam_camara</item>
+        <item>@string/exam_tcu</item>
+        <item>@string/exam_trf</item>
+        <item>@string/exam_trt</item>
+        <item>@string/exam_tre</item>
+        <item>@string/exam_cgu</item>
+        <item>@string/exam_anvisa</item>
+    </string-array>
 </resources>

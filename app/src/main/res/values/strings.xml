@@ -22,4 +22,25 @@
     <string name="portuguese">Português</string>
     <string name="mathematics">Matemática</string>
     <string name="sciences">Ciências</string>
+
+    <string name="exam_pf">Polícia Federal (PF)</string>
+    <string name="exam_prf">Polícia Rodoviária Federal (PRF)</string>
+    <string name="exam_receita">Receita Federal</string>
+    <string name="exam_inss">INSS</string>
+    <string name="exam_tj">Tribunal de Justiça</string>
+    <string name="exam_mp">Ministério Público</string>
+    <string name="exam_bb">Banco do Brasil</string>
+    <string name="exam_caixa">Caixa Econômica Federal</string>
+    <string name="exam_correios">Correios</string>
+    <string name="exam_pc">Polícia Civil</string>
+    <string name="exam_pm">Polícia Militar</string>
+    <string name="exam_dpu">Defensoria Pública</string>
+    <string name="exam_senado">Senado Federal</string>
+    <string name="exam_camara">Câmara dos Deputados</string>
+    <string name="exam_tcu">Tribunal de Contas da União (TCU)</string>
+    <string name="exam_trf">Tribunal Regional Federal (TRF)</string>
+    <string name="exam_trt">Tribunal Regional do Trabalho (TRT)</string>
+    <string name="exam_tre">Tribunal Regional Eleitoral (TRE)</string>
+    <string name="exam_cgu">Controladoria-Geral da União (CGU)</string>
+    <string name="exam_anvisa">Agência Nacional de Vigilância Sanitária (ANVISA)</string>
 </resources>

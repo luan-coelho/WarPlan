@@ -71,21 +71,25 @@ public class ExamAdapter extends BaseAdapter {
         ExamViewHolder holder;
 
         if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_line_exams, parent, false);
 
             holder = new ExamViewHolder();
 
-            holder.textViewExamNameValue = convertView.findViewById(R.id.textViewExamNameValue);
-            holder.textViewExamDescriptionValue = convertView.findViewById(R.id.textViewExamDescriptionValue);
-            holder.textViewExamDateValue = convertView.findViewById(R.id.textViewExameDateValue);
+            holder.textViewExamNameValue = convertView
+                    .findViewById(R.id.textViewExamNameValue);
+            holder.textViewExamDescriptionValue = convertView
+                    .findViewById(R.id.textViewExamDescriptionValue);
+            holder.textViewExamDateValue = convertView
+                    .findViewById(R.id.textViewExameDateValue);
 
             convertView.setTag(holder);
         } else {
             holder = (ExamViewHolder) convertView.getTag();
         }
 
-        DateTimeFormatter formatter = null;
+        DateTimeFormatter formatter;
 
         Exam exam = examList.get(position);
 
