@@ -1,38 +1,36 @@
 package br.edu.utfpr.luancoelho.warplan.adapter;
 
 import android.content.Context;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Locale;
 
 import br.edu.utfpr.luancoelho.warplan.R;
-import br.edu.utfpr.luancoelho.warplan.entity.Exam;
+import br.edu.utfpr.luancoelho.warplan.entity.ExamSubject;
 
-public class ExamAdapter extends BaseAdapter {
+public class ExamSubjectAdapter extends BaseAdapter {
 
     private Context context;
-    private List<Exam> examList;
+    private List<ExamSubject> examSubjects;
 
     private static class ExamViewHolder {
         TextView textViewExamNameValue;
         TextView textViewExamDescriptionValue;
-        TextView textViewExamDateValue;
+        TextView textViewWeightValue;
+        TextView textViewPriorityValue;
     }
 
-    public ExamAdapter() {
+    public ExamSubjectAdapter() {
 
     }
 
-    public ExamAdapter(Context context, List<Exam> examList) {
+    public ExamSubjectAdapter(Context context, List<ExamSubject> examSubjects) {
         this.context = context;
-        this.examList = examList;
+        this.examSubjects = examSubjects;
     }
 
     public Context getContext() {
@@ -43,22 +41,14 @@ public class ExamAdapter extends BaseAdapter {
         this.context = context;
     }
 
-    public List<Exam> getExamList() {
-        return examList;
-    }
-
-    public void setExamList(List<Exam> examList) {
-        this.examList = examList;
-    }
-
     @Override
     public int getCount() {
-        return this.examList.size();
+        return this.examSubjects.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return this.examList.get(position);
+        return this.examSubjects.get(position);
     }
 
     @Override
@@ -81,25 +71,22 @@ public class ExamAdapter extends BaseAdapter {
                     .findViewById(R.id.textViewExamNameValue);
             holder.textViewExamDescriptionValue = convertView
                     .findViewById(R.id.textViewSubjectNameValue);
-            holder.textViewExamDateValue = convertView
+            holder.textViewWeightValue = convertView
                     .findViewById(R.id.textViewWeightValue);
+            holder.textViewPriorityValue = convertView
+                    .findViewById(R.id.textViewPriorityValue);
 
             convertView.setTag(holder);
         } else {
             holder = (ExamViewHolder) convertView.getTag();
         }
 
-        DateTimeFormatter formatter;
+        ExamSubject examSubject = examSubjects.get(position);
 
-        Exam exam = examList.get(position);
-
-        holder.textViewExamNameValue.setText(exam.getName());
-        holder.textViewExamDescriptionValue.setText(exam.getDescription());
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", new Locale("pt", "BR"));
-            holder.textViewExamDateValue.setText(exam.getDate().format(formatter));
-        }
+        holder.textViewExamNameValue.setText(examSubject.getExam().getName());
+        holder.textViewExamDescriptionValue.setText(examSubject.getSubject().getName());
+        holder.textViewWeightValue.setText(String.valueOf(examSubject.getWeight()));
+        holder.textViewPriorityValue.setText(String.valueOf(examSubject.getPriority()));
 
         return convertView;
     }
