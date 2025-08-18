@@ -8,12 +8,14 @@
     </string-array>
 
     <string-array name="subjects_names">
+        <item>@string/select_option</item>
         <item>@string/portuguese</item>
         <item>@string/mathematics</item>
         <item>@string/sciences</item>
     </string-array>
 
     <string-array name="exams_names">
+        <item>@string/select_option</item>
         <item>@string/exam_pf</item>
         <item>@string/exam_prf</item>
         <item>@string/exam_receita</item>

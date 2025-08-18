@@ -15,6 +15,7 @@ import java.util.List;
 public class ExamSubjectActivity extends AppCompatActivity {
 
     private Spinner spinnerExam;
+    private Spinner spinnerSubject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +23,13 @@ public class ExamSubjectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_exam_subject);
 
         spinnerExam = findViewById(R.id.spinnerExam);
+        spinnerSubject = findViewById(R.id.spinnerSubject);
 
-        populateSpinnerAreaOfKnowledge();
+        populateSpinnerExams();
+        populateSpinnerSubjects();
     }
 
-    public void populateSpinnerAreaOfKnowledge() {
+    public void populateSpinnerExams() {
         String[] exams = getResources().getStringArray(R.array.exams_names);
 
         List<String> list = new ArrayList<>(Arrays.asList(exams));
@@ -34,6 +37,16 @@ public class ExamSubjectActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
         spinnerExam.setAdapter(adapter);
         spinnerExam.setSelection(0);
+    }
+
+    public void populateSpinnerSubjects() {
+        String[] subjects = getResources().getStringArray(R.array.subjects_names);
+
+        List<String> list = new ArrayList<>(Arrays.asList(subjects));
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
+        spinnerSubject.setAdapter(adapter);
+        spinnerSubject.setSelection(0);
     }
 
     public void save(View view) {
