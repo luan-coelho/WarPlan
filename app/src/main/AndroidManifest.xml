@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WarPlan">
+        android:theme="@style/Theme.ThemeStylesIcons">
         <activity
             android:name=".ExamSubjectActivity"
             android:exported="true">
