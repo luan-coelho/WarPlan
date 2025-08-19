@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void populateSpinnerAreaOfKnowledge() {
-        String[] areasOfKnowledge = getResources().getStringArray(R.array.areas_of_knowledge);
+        String[] areasOfKnowledge = getResources().getStringArray(R.array.subject_names_list);
 
         List<String> list = new ArrayList<>(Arrays.asList(areasOfKnowledge));
 

@@ -2,8 +2,10 @@
     <string name="app_name">WarPlan</string>
     <string name="name">Nome</string>
     <string name="description">Descrição</string>
-    <string name="exam">Concurso</string>
-    <string name="subject">Materia</string>
+    <string name="exam">Concurso:</string>
+    <string name="subject">Materia:</string>
+    <string name="weight">Peso:</string>
+    <string name="priority">Prioridade:</string>
     <string name="date">Data</string>
     <string name="duration_minutes">Duração em minutos</string>
     <string name="notes">Notas</string>
@@ -44,10 +46,31 @@
     <string name="exam_tre">Tribunal Regional Eleitoral (TRE)</string>
     <string name="exam_cgu">Controladoria-Geral da União (CGU)</string>
     <string name="exam_anvisa">Agência Nacional de Vigilância Sanitária (ANVISA)</string>
-    <string name="weight">Peso</string>
-    <string name="priority">Prioridade</string>
+
+    <string name="exam_pf_description">Prova de Polícia Federal</string>
+    <string name="exam_prf_description">Prova de Polícia Rodoviária Federal</string>
+    <string name="exam_receita_description">Prova de Receita Federal</string>
+    <string name="exam_inss_description">Prova de INSS</string>
+    <string name="exam_tj_description">Prova de Tribunal de Justiça</string>
+    <string name="exam_mp_description">Prova de Ministério Público</string>
+    <string name="exam_bb_description">Prova de Banco do Brasil</string>
+    <string name="exam_caixa_description">Prova de Caixa Econômica Federal</string>
+    <string name="exam_correios_description">Prova de Correios</string>
+    <string name="exam_pc_description">Prova de Polícia Civil</string>
+    <string name="exam_pm_description">Prova de Polícia Militar</string>
+    <string name="exam_dpu_description">Prova de Defensoria Pública</string>
+    <string name="exam_senado_description">Prova de Senado Federal</string>
+    <string name="exam_camara_description">Prova de Câmara dos Deputados</string>
+    <string name="exam_tcu_description">Prova de Tribunal de Contas da União (TCU)</string>
+    <string name="exam_trf_description">Prova de Tribunal Regional Federal (TRF)</string>
+    <string name="exam_trt_description">Prova de Tribunal Regional do Trabalho (TRT)</string>
+    <string name="exam_tre_description">Prova de Tribunal Regional Eleitoral (TRE)</string>
+    <string name="exam_cgu_description">Prova de Controladoria-Geral da União (CGU)</string>
+    <string name="exam_anvisa_description">Prova de Agência Nacional de Vigilância Sanitária (ANVISA)</string>
 
     <string name="priority_low">Baixa</string>
     <string name="priority_medium">Média</string>
     <string name="priority_high">Alta</string>
+    <string name="exam_clicked">Concurso de nome %1$s foi clicado</string>
+    <string name="exam_long_clicked">Clique longo no concurso de nome %1$s</string>
 </resources>

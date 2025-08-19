@@ -1,108 +1,91 @@
 package br.edu.utfpr.luancoelho.warplan;
 
+import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import br.edu.utfpr.luancoelho.warplan.adapter.ExamSubjectAdapter;
+import br.edu.utfpr.luancoelho.warplan.entity.Exam;
+import br.edu.utfpr.luancoelho.warplan.entity.ExamSubject;
+import br.edu.utfpr.luancoelho.warplan.entity.Priority;
+import br.edu.utfpr.luancoelho.warplan.entity.Subject;
 
 public class ExamSubjectActivity extends AppCompatActivity {
 
-    private Spinner spinnerExam;
-    private Spinner spinnerSubject;
-    private EditText editTextWeight;
-    private Spinner spinnerPriority;
+    private ListView subjectExamListView;
+    private List<ExamSubject> examSubjectList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exam_subject);
 
-        spinnerExam = findViewById(R.id.spinnerExam);
-        spinnerSubject = findViewById(R.id.spinnerSubject);
-        editTextWeight = findViewById(R.id.editTextWeight);
-        spinnerPriority = findViewById(R.id.spinnerPriority);
+        subjectExamListView = findViewById(R.id.listViewExamSubject);
+        subjectExamListView.setOnItemClickListener((parent, view, position, id) -> {
+            ExamSubject examSubject = (ExamSubject) parent.getItemAtPosition(position);
+            showToast(getString(R.string.exam_clicked, examSubject.getExam().getName()));
+        });
 
-        populateSpinnerExams();
-        populateSpinnerSubjects();
-        populateSpinnerPriorities();
+        subjectExamListView.setOnItemLongClickListener((parent, view, position, id) -> {
+            ExamSubject examSubject = (ExamSubject) parent.getItemAtPosition(position);
+            showToast(getString(R.string.exam_long_clicked, examSubject.getExam().getName()));
+            return true;
+        });
+
+        populateExamSubjectList();
+        populateListView();
     }
 
-    public void populateSpinnerExams() {
-        String[] exams = getResources().getStringArray(R.array.exams_names);
+    private void populateExamSubjectList() {
+        this.examSubjectList = new ArrayList<>();
 
-        List<String> list = new ArrayList<>(Arrays.asList(exams));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String[] examNames = getResources().getStringArray(R.array.exam_names_list);
+            String[] examDescriptions = getResources().getStringArray(R.array.exam_descriptions_list);
+            String[] subjectNames = getResources().getStringArray(R.array.subject_names_list);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
-        spinnerExam.setAdapter(adapter);
-        spinnerExam.setSelection(0);
+            Exam exam1 = new Exam(1L, examNames[3], examDescriptions[1], LocalDate.now());
+            Exam exam2 = new Exam(2L, examNames[1], examDescriptions[2], LocalDate.now());
+            Exam exam3 = new Exam(3L, examNames[2], examDescriptions[3], LocalDate.now());
+            Exam exam4 = new Exam(4L, examNames[3], examDescriptions[4], LocalDate.now());
+            Exam exam5 = new Exam(5L, examNames[4], examDescriptions[2], LocalDate.now());
+
+            Subject subject1 = new Subject(1L, subjectNames[2]);
+            Subject subject2 = new Subject(2L, subjectNames[1]);
+            Subject subject3 = new Subject(3L, subjectNames[2]);
+            Subject subject4 = new Subject(4L, subjectNames[3]);
+
+            ExamSubject examSubject1 = new ExamSubject(1L, exam1, subject1, 10.0, Priority.HIGH);
+            ExamSubject examSubject2 = new ExamSubject(2L, exam2, subject2, 20.0, Priority.MEDIUM);
+            ExamSubject examSubject3 = new ExamSubject(3L, exam3, subject3, 30.0, Priority.LOW);
+            ExamSubject examSubject4 = new ExamSubject(4L, exam4, subject4, 40.0, Priority.HIGH);
+            ExamSubject examSubject5 = new ExamSubject(5L, exam5, subject1, 50.0, Priority.MEDIUM);
+
+            List<ExamSubject> collection = List.of(
+                    examSubject1,
+                    examSubject2,
+                    examSubject3,
+                    examSubject4,
+                    examSubject5
+            );
+            this.examSubjectList.addAll(collection);
+        }
     }
 
-    public void populateSpinnerSubjects() {
-        String[] subjects = getResources().getStringArray(R.array.subjects_names);
-
-        List<String> list = new ArrayList<>(Arrays.asList(subjects));
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
-        spinnerSubject.setAdapter(adapter);
-        spinnerSubject.setSelection(0);
-    }
-
-    public void populateSpinnerPriorities() {
-        String[] priorities = getResources().getStringArray(R.array.priorities_names);
-
-        List<String> list = new ArrayList<>(Arrays.asList(priorities));
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
-        spinnerPriority.setAdapter(adapter);
-    }
-
-    public void save(View view) {
-        if (spinnerExam.getSelectedItemPosition() == 0) {
-            showToast("Informe o concurso");
-            return;
-        }
-
-        if (spinnerSubject.getSelectedItemPosition() == 0) {
-            showToast("Informe a matéria");
-            return;
-        }
-
-        if (editTextWeight.getText().toString().trim().isEmpty()) {
-            showToast("Informe o peso");
-            return;
-        }
-
-        if (spinnerPriority.getSelectedItemPosition() == 0) {
-            showToast("Informe a prioridade");
-            return;
-        }
-
-        String exam = spinnerExam.getSelectedItem().toString();
-        String subject = spinnerSubject.getSelectedItem().toString();
-        String weight = editTextWeight.getText().toString();
-        String priority = spinnerPriority.getSelectedItem().toString();
-
-        showToast("Concurso: " + exam + "\nMatéria: " + subject + "\nPeso: " + weight + "\nPrioridade: " + priority);
+    private void populateListView() {
+        ExamSubjectAdapter examSubjectAdapter = new ExamSubjectAdapter(this, examSubjectList);
+        subjectExamListView.setAdapter(examSubjectAdapter);
     }
 
     private void showToast(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
-    }
-
-    public void clear(View view) {
-        spinnerExam.setSelection(0);
-        spinnerSubject.setSelection(0);
-        editTextWeight.setText(null);
-        spinnerPriority.setSelection(0);
-        showToast("Campos limpos");
+        Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
     }
 
 }

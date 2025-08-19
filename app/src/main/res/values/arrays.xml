@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="areas_of_knowledge">
-        <item>@string/select_option</item>
-        <item>@string/portuguese</item>
-        <item>@string/mathematics</item>
-        <item>@string/sciences</item>
-    </string-array>
-
-    <string-array name="subjects_names">
+    <string-array name="subject_names_list">
         <item>@string/select_option</item>
         <item>@string/portuguese</item>
         <item>@string/mathematics</item>
@@ -21,7 +14,7 @@
         <item>@string/priority_high</item>
     </string-array>
 
-    <string-array name="exams_names">
+    <string-array name="exam_names_list">
         <item>@string/select_option</item>
         <item>@string/exam_pf</item>
         <item>@string/exam_prf</item>
@@ -43,5 +36,24 @@
         <item>@string/exam_tre</item>
         <item>@string/exam_cgu</item>
         <item>@string/exam_anvisa</item>
+    </string-array>
+
+    <string-array name="exam_descriptions_list">
+        <item>@string/exam_pf_description</item>
+        <item>@string/exam_prf_description</item>
+        <item>@string/exam_receita_description</item>
+        <item>@string/exam_inss_description</item>
+        <item>@string/exam_tj_description</item>
+        <item>@string/exam_mp_description</item>
+        <item>@string/exam_bb_description</item>
+        <item>@string/exam_caixa_description</item>
+        <item>@string/exam_correios_description</item>
+        <item>@string/exam_pc_description</item>
+        <item>@string/exam_pm_description</item>
+        <item>@string/exam_dpu_description</item>
+        <item>@string/exam_senado_description</item>
+        <item>@string/exam_camara_description</item>
+        <item>@string/exam_tcu_description</item>
+        <item>@string/exam_trf_description</item>
     </string-array>
 </resources>

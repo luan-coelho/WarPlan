@@ -20,6 +20,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".CreateExamSubjectActivity"
+            android:exported="false" />
+        <activity
             android:name=".ExamsActivity"
             android:exported="false" />
         <activity

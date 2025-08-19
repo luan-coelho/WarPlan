@@ -19,7 +19,7 @@ public class ExamSubjectAdapter extends BaseAdapter {
 
     private static class ExamViewHolder {
         TextView textViewExamNameValue;
-        TextView textViewExamDescriptionValue;
+        TextView textViewSubjectValue;
         TextView textViewWeightValue;
         TextView textViewPriorityValue;
     }
@@ -63,13 +63,13 @@ public class ExamSubjectAdapter extends BaseAdapter {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.list_line_exams, parent, false);
+            convertView = inflater.inflate(R.layout.list_line_exam_subject, parent, false);
 
             holder = new ExamViewHolder();
 
             holder.textViewExamNameValue = convertView
                     .findViewById(R.id.textViewExamNameValue);
-            holder.textViewExamDescriptionValue = convertView
+            holder.textViewSubjectValue = convertView
                     .findViewById(R.id.textViewSubjectNameValue);
             holder.textViewWeightValue = convertView
                     .findViewById(R.id.textViewWeightValue);
@@ -84,9 +84,9 @@ public class ExamSubjectAdapter extends BaseAdapter {
         ExamSubject examSubject = examSubjects.get(position);
 
         holder.textViewExamNameValue.setText(examSubject.getExam().getName());
-        holder.textViewExamDescriptionValue.setText(examSubject.getSubject().getName());
+        holder.textViewSubjectValue.setText(examSubject.getSubject().getName());
         holder.textViewWeightValue.setText(String.valueOf(examSubject.getWeight()));
-        holder.textViewPriorityValue.setText(String.valueOf(examSubject.getPriority()));
+        holder.textViewPriorityValue.setText(examSubject.getPriority().toString());
 
         return convertView;
     }
