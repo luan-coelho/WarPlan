@@ -6,12 +6,23 @@
     android:orientation="vertical"
     tools:context=".ExamsActivity">
 
+    <!-- Botão para criar novo concurso -->
+    <Button
+        android:id="@+id/buttonCreateExam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/create_new_exam_button"
+        android:textSize="16sp" />
+
     <!-- Lista de Concursos -->
     <ListView
         android:id="@+id/listViewExams"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         tools:listitem="@layout/list_line_exams" />
 
 </LinearLayout>

@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.time.LocalDate;
@@ -18,13 +21,48 @@ import br.edu.utfpr.luancoelho.warplan.entity.Exam;
 
 public class ExamsActivity extends AppCompatActivity {
 
+    public static final String EXTRA_EXAM_NAME = "EXTRA_EXAM_NAME";
+    public static final String EXTRA_EXAM_DESCRIPTION = "EXTRA_EXAM_DESCRIPTION";
+    public static final String EXTRA_EXAM_DATE = "EXTRA_EXAM_DATE";
+
     private ListView listViewExams;
+    private Button buttonCreateExam;
     private List<Exam> examList;
+
+    private ActivityResultLauncher<Intent> createExamLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exams);
+
+        setTitle(getString(R.string.exams_title));
+
+        examList = new ArrayList<>();
+
+        // Configurar ActivityResultLauncher
+        createExamLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        Intent data = result.getData();
+
+                        String examName = data.getStringExtra(ExamsActivity.EXTRA_EXAM_NAME);
+                        String examDescription = data.getStringExtra(ExamsActivity.EXTRA_EXAM_DESCRIPTION);
+                        String examDateStr = data.getStringExtra(ExamsActivity.EXTRA_EXAM_DATE);
+
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            LocalDate examDate = LocalDate.parse(examDateStr);
+                            Exam newExam = new Exam(examName, examDescription, examDate);
+
+                            examList.add(newExam);
+
+                            showToast(getString(R.string.exam_created_success, examName));
+
+                            populateListView();
+                        }
+                    }
+                });
 
         // Habilitar botão de voltar
         if (getSupportActionBar() != null) {
@@ -33,12 +71,18 @@ public class ExamsActivity extends AppCompatActivity {
         }
 
         listViewExams = findViewById(R.id.listViewExams);
+        buttonCreateExam = findViewById(R.id.buttonCreateExam);
+
         listViewExams.setOnItemClickListener((parent, view, position, id) -> {
             Exam exam = (Exam) parent.getItemAtPosition(position);
             openExamDetails(exam);
         });
 
-        populateExamList();
+        buttonCreateExam.setOnClickListener(v -> {
+            Intent intent = CreateExamActivity.createIntent(this);
+            createExamLauncher.launch(intent);
+        });
+
         populateListView();
     }
 
@@ -50,29 +94,6 @@ public class ExamsActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void populateExamList() {
-        this.examList = new ArrayList<>();
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Exam exam1 = new Exam(1L, "Exame 1", "Descrição do exame 1", LocalDate.now());
-            Exam exam2 = new Exam(2L, "Exame 2", "Descrição do exame 2", LocalDate.now());
-            Exam exam3 = new Exam(3L, "Exame 3", "Descrição do exame 3", LocalDate.now());
-            Exam exam4 = new Exam(4L, "Exame 4", "Descrição do exame 4", LocalDate.now());
-            Exam exam5 = new Exam(5L, "Exame 5", "Descrição do exame 5", LocalDate.now());
-            Exam exam6 = new Exam(6L, "Exame 6", "Descrição do exame 6", LocalDate.now());
-            Exam exam7 = new Exam(7L, "Exame 7", "Descrição do exame 7", LocalDate.now());
-            Exam exam8 = new Exam(8L, "Exame 8", "Descrição do exame 8", LocalDate.now());
-            Exam exam9 = new Exam(9L, "Exame 9", "Descrição do exame 9", LocalDate.now());
-            Exam exam10 = new Exam(10L, "Exame 10", "Descrição do exame 10", LocalDate.now());
-            Exam exam11 = new Exam(11L, "Exame 11", "Descrição do exame 11", LocalDate.now());
-            Exam exam12 = new Exam(12L, "Exame 12", "Descrição do exame 12", LocalDate.now());
-            Exam exam13 = new Exam(13L, "Exame 13", "Descrição do exame 13", LocalDate.now());
-
-            this.examList.addAll(List.of(exam1, exam2, exam3, exam4, exam5, exam6, exam7, exam8, exam9, exam10, exam11,
-                    exam12, exam13));
-        }
     }
 
     private void populateListView() {

@@ -66,11 +66,33 @@
     <string name="exam_trt_description">Prova de Tribunal Regional do Trabalho (TRT)</string>
     <string name="exam_tre_description">Prova de Tribunal Regional Eleitoral (TRE)</string>
     <string name="exam_cgu_description">Prova de Controladoria-Geral da União (CGU)</string>
-    <string name="exam_anvisa_description">Prova de Agência Nacional de Vigilância Sanitária (ANVISA)</string>
+    <string name="exam_anvisa_description">Prova de Agência Nacional de Vigilância Sanitária
+        (ANVISA)</string>
 
     <string name="priority_low">Baixa</string>
     <string name="priority_medium">Média</string>
     <string name="priority_high">Alta</string>
     <string name="exam_clicked">Concurso de nome %1$s foi clicado</string>
     <string name="exam_long_clicked">Clique longo no concurso de nome %1$s</string>
+
+    <!-- Create Exam Activity -->
+    <string name="exam_name_label">Nome do Concurso</string>
+    <string name="exam_description_label">Descrição do Concurso</string>
+    <string name="exam_date_label">Data do Concurso</string>
+    <string name="exam_name_hint">Digite o nome do concurso</string>
+    <string name="exam_description_hint">Digite a descrição do concurso</string>
+    <string name="exam_date_hint">Selecione a data do concurso</string>
+    <string name="create_exam_button">Criar Concurso</string>
+    <string name="save_exam_button">Salvar Concurso</string>
+    <string name="create_new_exam_button">Criar Novo Concurso</string>
+    <string name="create_exam_title">Criar Concurso</string>
+
+    <!-- Validation messages -->
+    <string name="error_exam_name_required">Informe o nome do concurso</string>
+    <string name="error_exam_description_required">Informe a descrição do concurso</string>
+    <string name="error_exam_date_required">Informe a data do concurso</string>
+    <string name="error_exam_date_invalid">Selecione uma data válida</string>
+    <string name="exam_saved_success">Concurso salvo: %1$s</string>
+    <string name="exam_created_success">Concurso criado: %1$s</string>
+    <string name="exams_title">Concursos</string>
 </resources>

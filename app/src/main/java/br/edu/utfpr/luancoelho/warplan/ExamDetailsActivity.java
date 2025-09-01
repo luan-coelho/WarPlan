@@ -16,6 +16,7 @@ import br.edu.utfpr.luancoelho.warplan.entity.Exam;
 
 public class ExamDetailsActivity extends AppCompatActivity {
 
+    // Constantes para os extras do Intent
     public static final String EXTRA_EXAM_ID = "EXTRA_EXAM_ID";
     public static final String EXTRA_EXAM_NAME = "EXTRA_EXAM_NAME";
     public static final String EXTRA_EXAM_DESCRIPTION = "EXTRA_EXAM_DESCRIPTION";

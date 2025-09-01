@@ -2,7 +2,6 @@ package br.edu.utfpr.luancoelho.warplan;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,14 +12,12 @@ public class CreateExamSubjectActivity extends AppCompatActivity {
 
     private EditText editTextSubjectName;
     private EditText editTextSubjectDescription;
-    private Button buttonSaveSubject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_exam_subject);
 
-        // Habilitar botão de voltar
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -28,14 +25,9 @@ public class CreateExamSubjectActivity extends AppCompatActivity {
 
         editTextSubjectName = findViewById(R.id.editTextSubjectName);
         editTextSubjectDescription = findViewById(R.id.editTextSubjectDescription);
-        buttonSaveSubject = findViewById(R.id.buttonSaveSubject);
+        Button buttonSaveSubject = findViewById(R.id.buttonSaveSubject);
 
-        buttonSaveSubject.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveSubject();
-            }
-        });
+        buttonSaveSubject.setOnClickListener(v -> saveSubject());
     }
 
     private void saveSubject() {
@@ -53,7 +45,7 @@ public class CreateExamSubjectActivity extends AppCompatActivity {
         }
 
         showToast("Matéria salva: " + subjectName);
-        
+
         // Limpar campos após salvar
         editTextSubjectName.setText("");
         editTextSubjectDescription.setText("");
@@ -66,10 +58,10 @@ public class CreateExamSubjectActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            // Botão de voltar pressionado
-            onBackPressed();
+            getOnBackPressedDispatcher().onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

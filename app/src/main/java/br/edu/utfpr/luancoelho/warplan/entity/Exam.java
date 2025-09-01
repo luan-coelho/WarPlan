@@ -13,6 +13,12 @@ public class Exam {
 
     }
 
+    public Exam(String name, String description, LocalDate date) {
+        this.name = name;
+        this.description = description;
+        this.date = date;
+    }
+
     public Exam(Long id, String name, String description, LocalDate date) {
         this.id = id;
         this.name = name;
