@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Base colors -->
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
 
-    <color name="primary">#1976D2</color>
-    <color name="primaryVariant">#1565C0</color>
+    <!-- Primary color palette based on #2d7a5f -->
+    <color name="primary">#2d7a5f</color>
+    <color name="primaryVariant">#1f5a45</color>
     <color name="onPrimary">#FFFFFF</color>
 
-    <color name="secondary">#43A047</color>
-    <color name="secondaryVariant">#388E3C</color>
+    <!-- Secondary color palette (complementary green) -->
+    <color name="secondary">#6bb896</color>
+    <color name="secondaryVariant">#5aa082</color>
     <color name="onSecondary">#FFFFFF</color>
 
-    <color name="background">#F5F5F5</color>
-    <color name="onBackground">#212121</color>
+    <!-- Background colors for light theme -->
+    <color name="background">#F8FBF9</color>
+    <color name="onBackground">#1a1a1a</color>
 
+    <!-- Surface colors for light theme -->
     <color name="surface">#FFFFFF</color>
-    <color name="onSurface">#212121</color>
+    <color name="onSurface">#1a1a1a</color>
 
-    <color name="error">#D32F2F</color>
+    <!-- Error colors -->
+    <color name="error">#d14545</color>
     <color name="onError">#FFFFFF</color>
+
+    <!-- Status bar colors -->
+    <color name="status_bar_color">#2d7a5f</color>
+
+    <!-- Additional accent colors -->
+    <color name="accent">#4d9f7a</color>
+    <color name="outline">#C4D6CC</color>
 </resources>

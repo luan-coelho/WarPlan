@@ -1,108 +1,75 @@
 package br.edu.utfpr.luancoelho.warplan;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class CreateExamSubjectActivity extends AppCompatActivity {
 
-    private Spinner spinnerExam;
-    private Spinner spinnerSubject;
-    private EditText editTextWeight;
-    private Spinner spinnerPriority;
+    private EditText editTextSubjectName;
+    private EditText editTextSubjectDescription;
+    private Button buttonSaveSubject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_exam_subject);
 
-        spinnerExam = findViewById(R.id.spinnerExam);
-        spinnerSubject = findViewById(R.id.spinnerSubject);
-        editTextWeight = findViewById(R.id.editTextWeight);
-        spinnerPriority = findViewById(R.id.spinnerPriority);
+        // Habilitar botão de voltar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
-        populateSpinnerExams();
-        populateSpinnerSubjects();
-        populateSpinnerPriorities();
+        editTextSubjectName = findViewById(R.id.editTextSubjectName);
+        editTextSubjectDescription = findViewById(R.id.editTextSubjectDescription);
+        buttonSaveSubject = findViewById(R.id.buttonSaveSubject);
+
+        buttonSaveSubject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveSubject();
+            }
+        });
     }
 
-    public void populateSpinnerExams() {
-        String[] exams = getResources().getStringArray(R.array.exam_names_list);
+    private void saveSubject() {
+        String subjectName = editTextSubjectName.getText().toString().trim();
+        String subjectDescription = editTextSubjectDescription.getText().toString().trim();
 
-        List<String> list = new ArrayList<>(Arrays.asList(exams));
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
-        spinnerExam.setAdapter(adapter);
-        spinnerExam.setSelection(0);
-    }
-
-    public void populateSpinnerSubjects() {
-        String[] subjects = getResources().getStringArray(R.array.subject_names_list);
-
-        List<String> list = new ArrayList<>(Arrays.asList(subjects));
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
-        spinnerSubject.setAdapter(adapter);
-        spinnerSubject.setSelection(0);
-    }
-
-    public void populateSpinnerPriorities() {
-        String[] priorities = getResources().getStringArray(R.array.priorities_names);
-
-        List<String> list = new ArrayList<>(Arrays.asList(priorities));
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
-        spinnerPriority.setAdapter(adapter);
-    }
-
-    public void save(View view) {
-        if (spinnerExam.getSelectedItemPosition() == 0) {
-            showToast("Informe o concurso");
+        if (subjectName.isEmpty()) {
+            showToast("Informe o nome da matéria");
             return;
         }
 
-        if (spinnerSubject.getSelectedItemPosition() == 0) {
-            showToast("Informe a matéria");
+        if (subjectDescription.isEmpty()) {
+            showToast("Informe a descrição da matéria");
             return;
         }
 
-        if (editTextWeight.getText().toString().trim().isEmpty()) {
-            showToast("Informe o peso");
-            return;
-        }
-
-        if (spinnerPriority.getSelectedItemPosition() == 0) {
-            showToast("Informe a prioridade");
-            return;
-        }
-
-        String exam = spinnerExam.getSelectedItem().toString();
-        String subject = spinnerSubject.getSelectedItem().toString();
-        String weight = editTextWeight.getText().toString();
-        String priority = spinnerPriority.getSelectedItem().toString();
-
-        showToast("Concurso: " + exam + "\nMatéria: " + subject + "\nPeso: " + weight + "\nPrioridade: " + priority);
+        showToast("Matéria salva: " + subjectName);
+        
+        // Limpar campos após salvar
+        editTextSubjectName.setText("");
+        editTextSubjectDescription.setText("");
     }
 
     private void showToast(String text) {
         Toast.makeText(this, text, Toast.LENGTH_LONG).show();
     }
 
-    public void clear(View view) {
-        spinnerExam.setSelection(0);
-        spinnerSubject.setSelection(0);
-        editTextWeight.setText(null);
-        spinnerPriority.setSelection(0);
-        showToast("Campos limpos");
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            // Botão de voltar pressionado
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
-
 }

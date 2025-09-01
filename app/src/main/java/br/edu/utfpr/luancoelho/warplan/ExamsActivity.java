@@ -1,7 +1,9 @@
 package br.edu.utfpr.luancoelho.warplan;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -24,14 +26,30 @@ public class ExamsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exams);
 
+        // Habilitar botão de voltar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
         listViewExams = findViewById(R.id.listViewExams);
         listViewExams.setOnItemClickListener((parent, view, position, id) -> {
             Exam exam = (Exam) parent.getItemAtPosition(position);
-            showToast("Concurso de nome " + exam.getName() + " foi clicado");
+            openExamDetails(exam);
         });
 
         populateExamList();
         populateListView();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            // Botão de voltar pressionado
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void populateExamList() {
@@ -52,7 +70,8 @@ public class ExamsActivity extends AppCompatActivity {
             Exam exam12 = new Exam(12L, "Exame 12", "Descrição do exame 12", LocalDate.now());
             Exam exam13 = new Exam(13L, "Exame 13", "Descrição do exame 13", LocalDate.now());
 
-            this.examList.addAll(List.of(exam1, exam2, exam3, exam4, exam5, exam6, exam7, exam8, exam9, exam10, exam11, exam12, exam13));
+            this.examList.addAll(List.of(exam1, exam2, exam3, exam4, exam5, exam6, exam7, exam8, exam9, exam10, exam11,
+                    exam12, exam13));
         }
     }
 
@@ -63,6 +82,11 @@ public class ExamsActivity extends AppCompatActivity {
 
     private void showToast(String text) {
         Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
+    }
+
+    private void openExamDetails(Exam exam) {
+        Intent intent = ExamDetailsActivity.createIntent(this, exam);
+        startActivity(intent);
     }
 
 }

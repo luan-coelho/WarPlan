@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Primary color palette for dark theme -->
+    <color name="primary">#6bb896</color>
+    <color name="primaryVariant">#4d9f7a</color>
+    <color name="onPrimary">#1a1a1a</color>
+
+    <!-- Secondary color palette for dark theme -->
+    <color name="secondary">#5aa082</color>
+    <color name="secondaryVariant">#2d7a5f</color>
+    <color name="onSecondary">#1a1a1a</color>
+
+    <!-- Background colors for dark theme -->
+    <color name="background">#121212</color>
+    <color name="onBackground">#E8F5E8</color>
+
+    <!-- Surface colors for dark theme -->
+    <color name="surface">#1E1E1E</color>
+    <color name="onSurface">#E8F5E8</color>
+
+    <!-- Error colors -->
+    <color name="error">#CF6679</color>
+    <color name="onError">#000000</color>
+
+    <!-- Status bar colors for dark theme -->
+    <color name="status_bar_color">#1E1E1E</color>
+
+    <!-- Additional accent colors for dark theme -->
+    <color name="accent">#6bb896</color>
+    <color name="outline">#3C4F41</color>
+</resources>

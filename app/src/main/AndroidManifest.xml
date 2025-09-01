@@ -5,13 +5,13 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@mipmap/ic_launcher_warplan"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_warplan_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ThemeStylesIcons">
         <activity
-            android:name=".ExamSubjectActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,13 +20,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ExamDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExamSubjectActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateExamSubjectActivity"
             android:exported="false" />
         <activity
             android:name=".ExamsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="false" />
     </application>
 

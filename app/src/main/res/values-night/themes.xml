@@ -1,7 +1,37 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.ThemeStylesIcons" parent="Theme.Material3.Dark">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    <!-- Dark theme application theme. -->
+    <style name="Theme.ThemeStylesIcons" parent="Theme.Material3.DayNight">
+        <!-- Primary colors -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/onPrimary</item>
+        <item name="colorPrimaryContainer">@color/primaryVariant</item>
+        <item name="colorOnPrimaryContainer">@color/onPrimary</item>
+
+        <!-- Secondary colors -->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/onSecondary</item>
+        <item name="colorSecondaryContainer">@color/secondaryVariant</item>
+        <item name="colorOnSecondaryContainer">@color/onSecondary</item>
+
+        <!-- Background and surface colors -->
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorOnBackground">@color/onBackground</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/onSurface</item>
+        <item name="colorSurfaceVariant">@color/surface</item>
+        <item name="colorOnSurfaceVariant">@color/onSurface</item>
+
+        <!-- Error colors -->
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">@color/onError</item>
+
+        <!-- Additional colors -->
+        <item name="colorOutline">@color/outline</item>
+
+        <!-- Status bar configuration for dark theme -->
+        <item name="android:statusBarColor">@color/status_bar_color</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">@color/surface</item>
+        <item name="android:windowLightNavigationBar">false</item>
     </style>
 </resources>
