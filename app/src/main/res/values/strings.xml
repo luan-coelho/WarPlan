@@ -95,4 +95,22 @@
     <string name="exam_saved_success">Concurso salvo: %1$s</string>
     <string name="exam_created_success">Concurso criado: %1$s</string>
     <string name="exams_title">Concursos</string>
+
+    <!-- About Activity -->
+    <string name="about_title">Sobre o App</string>
+    <string name="utfpr_name">Universidade Tecnológica Federal do Paraná</string>
+    <string name="utfpr_logo_description">Logo da UTFPR</string>
+    <string name="app_logo_description">Logo do WarPlan</string>
+    <string name="app_description">O WarPlan é um aplicativo desenvolvido para auxiliar estudantes
+        na organização e planejamento de estudos para concursos públicos. Com ele, você pode
+        cadastrar concursos, gerenciar matérias de estudo, definir prioridades e acompanhar seu
+        progresso de forma eficiente e organizada.</string>
+    <string name="author_info_title">Informações do Desenvolvedor</string>
+    <string name="student_name_label">ALUNO</string>
+    <string name="student_name">Luan Coelho</string>
+    <string name="course_label">CURSO</string>
+    <string name="course_name">Engenharia de Software</string>
+    <string name="email_label">E-MAIL</string>
+    <string name="student_email">luancoelho@alunos.utfpr.edu.br</string>
+    <string name="about">Sobre</string>
 </resources>

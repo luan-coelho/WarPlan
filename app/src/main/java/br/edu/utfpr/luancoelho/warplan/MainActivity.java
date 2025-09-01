@@ -16,9 +16,15 @@ public class MainActivity extends AppCompatActivity {
         setTitle(R.string.app_name);
 
         MaterialCardView cardExams = findViewById(R.id.cardExams);
+        MaterialCardView cardAbout = findViewById(R.id.cardAbout);
 
         cardExams.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, ExamsActivity.class);
+            startActivity(intent);
+        });
+
+        cardAbout.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(intent);
         });
     }

@@ -28,6 +28,7 @@ public class ExamsActivity extends AppCompatActivity {
     private ListView listViewExams;
     private Button buttonCreateExam;
     private List<Exam> examList;
+    private ExamAdapter examAdapter;
 
     private ActivityResultLauncher<Intent> createExamLauncher;
 
@@ -37,32 +38,6 @@ public class ExamsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_exams);
 
         setTitle(getString(R.string.exams_title));
-
-        examList = new ArrayList<>();
-
-        // Configurar ActivityResultLauncher
-        createExamLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                        Intent data = result.getData();
-
-                        String examName = data.getStringExtra(ExamsActivity.EXTRA_EXAM_NAME);
-                        String examDescription = data.getStringExtra(ExamsActivity.EXTRA_EXAM_DESCRIPTION);
-                        String examDateStr = data.getStringExtra(ExamsActivity.EXTRA_EXAM_DATE);
-
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            LocalDate examDate = LocalDate.parse(examDateStr);
-                            Exam newExam = new Exam(examName, examDescription, examDate);
-
-                            examList.add(newExam);
-
-                            showToast(getString(R.string.exam_created_success, examName));
-
-                            populateListView();
-                        }
-                    }
-                });
 
         // Habilitar botão de voltar
         if (getSupportActionBar() != null) {
@@ -83,21 +58,60 @@ public class ExamsActivity extends AppCompatActivity {
             createExamLauncher.launch(intent);
         });
 
-        populateListView();
+        examList = new ArrayList<>();
+        createExamListView();
+
+        createExamLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        Intent data = result.getData();
+
+                        String examName = data.getStringExtra(ExamsActivity.EXTRA_EXAM_NAME);
+                        String examDescription = data.getStringExtra(ExamsActivity.EXTRA_EXAM_DESCRIPTION);
+                        String examDateStr = data.getStringExtra(ExamsActivity.EXTRA_EXAM_DATE);
+
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            LocalDate examDate;
+                            try {
+                                examDate = LocalDate.parse(examDateStr);
+                            } catch (Exception e) {
+                                // Se falhar o parse ISO, tenta converter do formato brasileiro
+                                String[] dateParts = examDateStr.split("/");
+                                if (dateParts.length == 3) {
+                                    int day = Integer.parseInt(dateParts[0]);
+                                    int month = Integer.parseInt(dateParts[1]);
+                                    int year = Integer.parseInt(dateParts[2]);
+                                    examDate = LocalDate.of(year, month, day);
+                                } else {
+                                    showToast("Erro ao processar data do exame");
+                                    return;
+                                }
+                            }
+
+                            Exam newExam = new Exam(examName, examDescription, examDate);
+
+                            examList.add(newExam);
+                            examAdapter.notifyDataSetChanged();
+
+                            showToast(getString(R.string.exam_created_success, examName));
+                        }
+                    }
+                });
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             // Botão de voltar pressionado
-            onBackPressed();
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void populateListView() {
-        ExamAdapter examAdapter = new ExamAdapter(this, examList);
+    private void createExamListView() {
+        examAdapter = new ExamAdapter(this, examList);
         listViewExams.setAdapter(examAdapter);
     }
 

@@ -115,7 +115,13 @@ public class CreateExamActivity extends AppCompatActivity {
         Intent resultIntent = new Intent();
         resultIntent.putExtra(ExamsActivity.EXTRA_EXAM_NAME, examName);
         resultIntent.putExtra(ExamsActivity.EXTRA_EXAM_DESCRIPTION, examDescription);
-        resultIntent.putExtra(ExamsActivity.EXTRA_EXAM_DATE, examDateString);
+
+        // Passar a data no formato ISO para que LocalDate.parse() funcione corretamente
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && selectedDate != null) {
+            resultIntent.putExtra(ExamsActivity.EXTRA_EXAM_DATE, selectedDate.toString());
+        } else {
+            resultIntent.putExtra(ExamsActivity.EXTRA_EXAM_DATE, examDateString);
+        }
 
         setResult(RESULT_OK, resultIntent);
 
@@ -129,7 +135,7 @@ public class CreateExamActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            getOnBackPressedDispatcher().onBackPressed();
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
