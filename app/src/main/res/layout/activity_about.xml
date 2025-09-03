@@ -16,14 +16,6 @@
         android:gravity="center_horizontal">
 
         <!-- Logo da UTFPR -->
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="24dp"
-            android:src="@drawable/ic_utfpr_logo"
-            android:contentDescription="@string/utfpr_logo_description"
-            android:scaleType="centerInside" />
 
         <!-- Nome da UTFPR -->
         <TextView
@@ -164,47 +156,6 @@
                 </LinearLayout>
 
                 <!-- Curso -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="12dp"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginEnd="12dp"
-                        android:src="@android:drawable/ic_menu_agenda"
-                        android:contentDescription="Ícone de curso"
-                        app:tint="?attr/colorPrimary" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/course_label"
-                            android:textSize="12sp"
-                            android:textColor="?attr/colorOnSurfaceVariant"
-                            android:textStyle="bold"
-                            android:fontFamily="sans-serif-medium" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/course_name"
-                            android:textSize="16sp"
-                            android:textColor="?attr/colorOnSurface"
-                            android:fontFamily="sans-serif" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
 
                 <!-- E-mail -->
                 <LinearLayout
